@@ -1,4 +1,4 @@
-# TraSw for FairMOT
+# TraSA for FairMOT
 
 * **A Single-Target Attack example (Attack ID: 19; Screener ID: 24):**
 
@@ -10,18 +10,14 @@
 </table>
 By perturbing only two frames in this example video, we can exchange the 19th ID and the 24th ID completely. Starting from frame 592, the 19th and 24th IDs can keep the exchange without noise.
 
-
-> [**TraSw: Tracklet-Switch Adversarial Attacks against Multi-Object Tracking**](https://arxiv.org/abs/2111.08954),            
-> Delv Lin, Qi Chen, Chengyu Zhou, Kun He,              
-> *[arXiv 2111.08954](https://arxiv.org/abs/2111.08954)*
-
 **Related Works**
 
-* [TraSw for ByteTrack](https://github.com/DerryHub/ByteTrack-attack)
+* [TraSA for ByteTrack](https://github.com/DerryHub/ByteTrack-attack)
 
 ## Abstract
 
-Multi-Object Tracking (MOT) has achieved aggressive progress and derives many excellent deep learning models. However, the robustness of the trackers is rarely studied, and it is challenging to attack the MOT system since its mature association algorithms are designed to be robust against errors during the tracking. In this work, we analyze the vulnerability of popular pedestrian MOT trackers and propose a novel adversarial attack method called Tracklet-Switch (TraSw) against the complete tracking pipeline of MOT. TraSw can fool the advanced deep trackers (i.e., FairMOT and ByteTrack) to fail to track the targets in the subsequent frames by attacking very few frames. Experiments on the MOT-Challenge datasets (i.e., 2DMOT15, MOT17, and MOT20) show that TraSw can achieve an extraordinarily high success rate of over 95% by attacking only four frames on average. To our knowledge, this is the first work on the adversarial attack against pedestrian MOT trackers. 
+hough achieving aggressive progress, there are only a few explorations on the robustness of Multi-Object Tracking (MOT) trackers. 
+Most of the existing MOT researches focus on pedestrian tracking, yet there is little research on its adversarial attack, hindering the robustness improvement study on these systems. It is also challenging to attack these systems since various mature association algorithms have been designed to be robust against errors during the tracking. In this work, we analyze the vulnerability of typical pedestrian MOT trackers and propose a novel adversarial attack method called Tracklet-Switch Attack (TraSA) against the complete tracking pipeline. By perturbing very few frames, the proposed TraSA can spoof the advanced deep pedestrian trackers (i.e., FairMOT and ByteTrack), causing them fail to track the targets in subsequent frames. Specifically, TraSA learns an effective perturbation generator to make the tracker confuse intersecting trajectories by attacking very few frames, then keeps the error across frames to the end of the sequences without any more perturbation. In our method, two new losses are proposed: PushPull works on the re-identification (re-ID) branch to perturb two approaching pedestrian detection boxes, while CenterLeaping works on the detection branch to perturb pedestrian features to make their trajectories switch. Experiments on the MOT-Challenge datasets (i.e., 2DMOT15, MOT17, and MOT20) show that TraSA can achieve an extraordinarily high success attack rate of over 90% by attacking only four frames on average.
 
 ## Attack Performance
 
@@ -119,7 +115,7 @@ This source code is based on [FairMOT](https://github.com/microsoft/FairMOT). Th
 
 ```
 @misc{lin2021trasw,
-      title={TraSw: Tracklet-Switch Adversarial Attacks against Multi-Object Tracking}, 
+      title={Tracklet-Switch Adversarial Attacks against Multi-Object Tracking}, 
       author={Delv Lin and Qi Chen and Chengyu Zhou and Kun He},
       year={2021},
       eprint={2111.08954},
